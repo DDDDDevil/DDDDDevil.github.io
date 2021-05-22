@@ -149,7 +149,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CH">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/19/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/22/springboot%E8%B8%A9%E5%9D%91-resful%E6%8E%A5%E5%8F%97%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E4%B8%BAnull/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -163,15 +163,11 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/05/19/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+            <a href="/2021/05/22/springboot%E8%B8%A9%E5%9D%91-resful%E6%8E%A5%E5%8F%97%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E4%B8%BAnull/" class="post-title-link" itemprop="url">springboot踩坑-resful接受对象属性为null</a>
         </h2>
 
         <div class="post-meta">
 		
-		  <i class="fa fa-thumb-tack"></i>
-		  <font color=7D26CD>置顶</font>
-		  <span class="post-meta-divider">|</span>
-		  
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
@@ -179,7 +175,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-05-19 20:40:12 / Modified: 23:16:48" itemprop="dateCreated datePublished" datetime="2021-05-19T20:40:12+08:00">2021-05-19</time>
+              <time title="Created: 2021-05-22 20:36:35 / Modified: 20:59:21" itemprop="dateCreated datePublished" datetime="2021-05-22T20:36:35+08:00">2021-05-22</time>
             </span>
 
           
@@ -193,19 +189,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+          <h3 id="RequestBody-接收到的对象属性为null"><a href="#RequestBody-接收到的对象属性为null" class="headerlink" title="@RequestBody 接收到的对象属性为null"></a>@RequestBody 接收到的对象属性为null</h3><p>今天写springboot项目的时候，前端postman测试传入一个对象到接口，发现后端拿到的接口一直为null</p>
+<h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderInfo</span> </span>&#123;</span><br><span class="line">    <span class="comment">//车号</span></span><br><span class="line">    <span class="keyword">private</span> String TrainId;</span><br><span class="line">    <span class="comment">//身份证</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> IdCard;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h4 id="解释一下-Data这个注解"><a href="#解释一下-Data这个注解" class="headerlink" title="解释一下@Data这个注解"></a>解释一下@Data这个注解</h4><p>这个注解的作用主要是可以提高代码的简洁，使用这个注解可以省去大量的get和set、toString方法</p>
+<p>要使用这个注解，要先引用lombok（一个工具类库，用简单的注解形式来简化代码，提高开发效率）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h4 id="回到问题：为什么接受到的对象属性为null"><a href="#回到问题：为什么接受到的对象属性为null" class="headerlink" title="回到问题：为什么接受到的对象属性为null"></a>回到问题：为什么接受到的对象属性为null</h4><p>这个原因是因为spring mvc默认使用jackson对json进行解析，</p>
+<p>在实体类的字段名在转换为json的时候，字段的属性名改变了。</p>
+<h4 id="原因：springboot解析器在解析json的时候，因字段名驼峰命名无法匹配字段导致"><a href="#原因：springboot解析器在解析json的时候，因字段名驼峰命名无法匹配字段导致" class="headerlink" title="原因：springboot解析器在解析json的时候，因字段名驼峰命名无法匹配字段导致"></a>原因：springboot解析器在解析json的时候，因字段名驼峰命名无法匹配字段导致</h4><h4 id="解决方法：在实体类字段的set方法加上如下注解："><a href="#解决方法：在实体类字段的set方法加上如下注解：" class="headerlink" title="解决方法：在实体类字段的set方法加上如下注解："></a>解决方法：在实体类字段的set方法加上如下注解：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@JsonProperty(value = &quot;trainid&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getTrainId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> TrainId;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@JsonProperty(value = &quot;trainid&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTrainId</span><span class="params">(String trainId)</span> </span>&#123;</span><br><span class="line">    TrainId = trainId;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@JsonProperty(value = &quot;idcard&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getIdCard</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> IdCard;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@JsonProperty(value = &quot;idcard&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setIdCard</span><span class="params">(<span class="keyword">long</span> idCard)</span> </span>&#123;</span><br><span class="line">    IdCard = idCard;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>问题成功解决。</p>
+<p>这个问题的主要原因在于：springboot驼峰命名在生成字段的时候，会将单词中间的大写字母变为小写，并且中间加上下划线。</p>
+<p>实体类属性最好不要有大写字母，避免发生问题</p>
+<p>正确命名方法：id_card或者train_id</p>
 
       
     </div>
@@ -376,7 +374,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -414,7 +412,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共1.1k字</span>
+  <span class="post-count">博客全站共1.4k字</span>
 </div>
 
 

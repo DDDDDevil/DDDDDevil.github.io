@@ -149,6 +149,79 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CH">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/23/DataGrip%E8%BF%9E%E6%8E%A5MySQL%E6%8A%A5%E6%97%B6%E5%8C%BA%E9%94%99%E8%AF%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wangh">
+      <meta itemprop="description" content="祝你永远开心，永远快乐~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小飞猪">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/23/DataGrip%E8%BF%9E%E6%8E%A5MySQL%E6%8A%A5%E6%97%B6%E5%8C%BA%E9%94%99%E8%AF%AF/" class="post-title-link" itemprop="url">DataGrip连接MySQL报时区错误</a>
+        </h2>
+
+        <div class="post-meta">
+		
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-05-23 13:05:46 / Modified: 13:14:28" itemprop="dateCreated datePublished" datetime="2021-05-23T13:05:46+08:00">2021-05-23</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="DataGrip-连接Mysql-出错-Server-returns-invalid-timezone-Go-to-‘Advanced’-tab-and-set-‘"><a href="#DataGrip-连接Mysql-出错-Server-returns-invalid-timezone-Go-to-‘Advanced’-tab-and-set-‘" class="headerlink" title="DataGrip 连接Mysql 出错:Server returns invalid timezone. Go to ‘Advanced’ tab and set ‘"></a>DataGrip 连接Mysql 出错:Server returns invalid timezone. Go to ‘Advanced’ tab and set ‘</h3><p>这个错误指的是时区错误，因为MySQL的默认时区为UTC时区：世界标准时间，而我们在东八区，</p>
+<p>时区不匹配就会报这个错误</p>
+<h3 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h3><p>1、进入mysql命令行输入两行命令来修改时区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set global time_zone = &#x27;+8:00&#x27;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set time_zone = &#x27;+8:00&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>输入完毕后，输入命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like&#x27;%time_zone&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>查看时区状态表，变为+8:00即为修改成功</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/gOIfII"><img src="https://z3.ax1x.com/2021/05/23/gOIfII.png" alt="gOIfII.png"></a></p>
+<p>完成</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CH">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/22/springboot%E9%85%8D%E7%BD%AEswagger2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -444,13 +517,13 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -488,7 +561,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共1.7k字</span>
+  <span class="post-count">博客全站共1.8k字</span>
 </div>
 
 

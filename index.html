@@ -342,10 +342,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-05-23 13:05:46 / Modified: 13:14:28" itemprop="dateCreated datePublished" datetime="2021-05-23T13:05:46+08:00">2021-05-23</time>
+              <time title="Created: 2021-05-23 13:05:46" itemprop="dateCreated datePublished" datetime="2021-05-23T13:05:46+08:00">2021-05-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-05-24 00:04:52" itemprop="dateModified" datetime="2021-05-24T00:04:52+08:00">2021-05-24</time>
+              </span>
 
           
 
@@ -358,7 +364,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="DataGrip-连接Mysql-出错-Server-returns-invalid-timezone-Go-to-‘Advanced’-tab-and-set-‘"><a href="#DataGrip-连接Mysql-出错-Server-returns-invalid-timezone-Go-to-‘Advanced’-tab-and-set-‘" class="headerlink" title="DataGrip 连接Mysql 出错:Server returns invalid timezone. Go to ‘Advanced’ tab and set ‘"></a>DataGrip 连接Mysql 出错:Server returns invalid timezone. Go to ‘Advanced’ tab and set ‘</h3><p>这个错误指的是时区错误，因为MySQL的默认时区为UTC时区：世界标准时间，而我们在东八区，</p>
+          <h3 id="DataGrip连接Mysql出错-Server-returns-invalid-timezone-Go-to-‘Advanced’-tab-and-set-‘"><a href="#DataGrip连接Mysql出错-Server-returns-invalid-timezone-Go-to-‘Advanced’-tab-and-set-‘" class="headerlink" title="DataGrip连接Mysql出错:Server returns invalid timezone. Go to ‘Advanced’ tab and set ‘"></a>DataGrip连接Mysql出错:Server returns invalid timezone. Go to ‘Advanced’ tab and set ‘</h3><p>这个错误指的是时区错误，因为MySQL的默认时区为UTC时区：世界标准时间，而我们在东八区，</p>
 <p>时区不匹配就会报这个错误</p>
 <h3 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h3><p>1、进入mysql命令行输入两行命令来修改时区</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set global time_zone = &#x27;+8:00&#x27;;</span><br></pre></td></tr></table></figure>
